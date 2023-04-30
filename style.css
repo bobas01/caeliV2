@@ -9,7 +9,7 @@
 p,
 h2 {
   font-family: "Lato", sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: justify;
   color: #fff;
 }
@@ -80,6 +80,13 @@ main {
   color: #ffffff;
   text-align: justify;
 }
+.big a {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  padding: 10px 20px 0 20px;
+  color: #ffffff;
+  float: right;
+}
 
 @media screen and (min-width: 600px) {
   .btn {
@@ -121,8 +128,17 @@ main {
 #slide2 .text h2 {
   font-size: 1.5rem;
   margin-bottom: 30px;
+}
+#slide2 .text h2 span {
   -webkit-text-decoration: underline #fff;
           text-decoration: underline #fff;
+}
+#slide2 .text ul {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  padding: 10px 20px 0 20px;
+  color: #ffffff;
+  list-style-type: square;
 }
 
 #slide2.active {
@@ -164,7 +180,7 @@ main {
   font-family: "Lato", sans-serif;
   color: #fff;
   background-color: rgb(115, 173, 45);
-  border: 3px solid rgb(81, 122, 31);
+  border: 1px solid rgb(81, 122, 31);
   font-size: 1rem;
 }
 #slide3 table button {
@@ -172,7 +188,7 @@ main {
   font-size: 1.5rem;
   width: 180px;
   height: 60px;
-  border: 5px solid rgb(81, 122, 31);
+  border: 2px solid rgb(81, 122, 31);
   background-color: rgb(115, 173, 45);
   color: #fff;
 }
@@ -243,6 +259,7 @@ main {
 #slide4 {
   display: none;
   position: relative;
+  height: 60vh;
 }
 #slide4 #imgSlide4 img:last-child {
   float: right;
@@ -269,6 +286,11 @@ main {
   position: absolute;
   top: 37%;
   right: 10%;
+}
+#slide4 .big {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
 }
 
 #slide4.active3 {
@@ -307,10 +329,48 @@ main {
   height: 1300px;
 }
 #slide5 input[type=range] {
+  --progress: calc((100% - 50px) * calc(var(--value) / 100));
   width: 80%;
   margin: 100px auto;
   display: block;
   cursor: pointer;
+  -webkit-appearance: none;
+  padding: 0;
+  border-radius: 25px;
+  background: linear-gradient(to right, #076db5 0%, #076db5 var(--progress), #c00000 var(--progress), #c00000 100%);
+  background-size: 100% 100%;
+  box-sizing: content-box;
+  position: relative;
+  height: 30px;
+}
+#slide5 input[type=range]::before {
+  content: "Le plus important suffira.";
+  left: 0;
+}
+#slide5 input[type=range]::after {
+  content: "Je veux tous savoir";
+  right: 0;
+}
+#slide5 input[type=range]::after, #slide5 input[type=range]::before {
+  font-size: 1.5rem;
+  font-family: "Lato", sans-serif;
+  position: absolute;
+  top: 165%;
+}
+#slide5 input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #A7A7A7;
+  border-radius: 15px;
+  background: rgb(237, 125, 49);
+}
+#slide5 input[type=range]::-webkit-slider-thumb:before {
+  content: attr(data-count);
+  display: block;
+  background: green;
+  width: 10px;
+  height: 10px;
 }
 #slide5 #container {
   width: 80%;
@@ -383,7 +443,8 @@ main {
   width: 100%;
   font-size: 1rem;
 }
-#slide6 #btn #btn6, #slide6 #btn #btn7 {
+#slide6 #btn #btn6,
+#slide6 #btn #btn7 {
   width: 230px;
 }
 

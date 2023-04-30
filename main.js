@@ -64,9 +64,17 @@ btn2.addEventListener('click', function () {
 
   });
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  document.querySelector('input[type="range"]').value = 0;
-});
+  const range = document.querySelector('input[type="range"]');
+  const rangeValue = document.querySelector('#range-value');
+  
+  range.addEventListener('input', () => {
+    const val = range.value;
+    range.style.setProperty('--value', val);
+   
+  });
+  window.addEventListener('load', () => {
+    range.style.setProperty('--value', range.value);
+  });
  // Fonction qui crée les divs à chaque fois que l'input range change de valeur
  function createDivs() {
   // On vide le contenu du container à chaque fois pour éviter les doublons
@@ -77,24 +85,82 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // On crée une div bigBox
     const bigBox = document.createElement("div");
     bigBox.classList.add("bigBox");
-    
-    // On crée deux div littleBox pour chaque bigBox
-    const littleBox1 = document.createElement("div");
-    littleBox1.classList.add("littleBox");
-    littleBox1.innerHTML = '<img src="./img/alarm.svg" alt="alarm"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, ducimus.</p>';
-    
-    const littleBox2 = document.createElement("div");
-    littleBox2.classList.add("littleBox");
-    littleBox2.innerHTML = '<img src="./img/pouceVert.svg" alt="pouce vert"><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, quisquam?</p>';
-    
-    // On ajoute les littleBox à la bigBox
-    bigBox.appendChild(littleBox1);
-    bigBox.appendChild(littleBox2);
-    
+
+    // On crée des div littleBox en fonction de la valeur de l'input range
+    let numLittleBoxes;
+    switch (i) {
+      case 0:
+        numLittleBoxes = 0;
+        break;
+      case 25:
+        numLittleBoxes = 1;
+        break;
+      case 50:
+        numLittleBoxes = 1;
+        break;
+      case 75:
+        numLittleBoxes = 1;
+        break;
+      case 100:
+        numLittleBoxes = 1;
+        break;
+    }
+
+    for (let j = 0; j < numLittleBoxes; j++) {
+      const littleBox1 = document.createElement("div");
+      littleBox1.classList.add("littleBox");
+      let littleBox1Text;
+      switch (i+j) {
+        case 0:
+          littleBox1Text = "Attention, il faut changer les matériaux.";
+          break;
+        case 25:
+          littleBox1Text = "Achète ceci pour améliorer ta performance.";
+          break;
+        case 50:
+          littleBox1Text = "N'oublie pas de prendre une pause.";
+          break;
+        case 75:
+          littleBox1Text = "Oh mon dieu, c'est pas bien.";
+          break;
+        case 100:
+          littleBox1Text = "Fais ça et ça sera très bien.";
+          break;
+      }
+      littleBox1.innerHTML = `<img src="./img/alarm.svg" alt="alarm"><p>${littleBox1Text}</p>`;
+
+      const littleBox2 = document.createElement("div");
+      littleBox2.classList.add("littleBox");
+      let littleBox2Text;
+      switch (i+j) {
+        case 0:
+          littleBox2Text = "Achète ceci pour réduire les coûts.";
+          break;
+        case 25:
+          littleBox2Text = "N'oublie pas de te reposer.";
+          break;
+        case 50:
+          littleBox2Text = "Oh mon dieu, c'est incroyable.";
+          break;
+        case 75:
+          littleBox2Text = "Fais ça pour obtenir de meilleurs résultats.";
+          break;
+        case 100:
+          littleBox2Text = "Attention, ne fais pas ça !";
+          break;
+      }
+      littleBox2.innerHTML = `<img src="./img/pouceVert.svg" alt="pouce vert"><p>${littleBox2Text}</p>`;
+
+      // On ajoute les littleBox à la bigBox
+      bigBox.appendChild(littleBox1);
+      bigBox.appendChild(littleBox2);
+    }
+
     // On ajoute la bigBox au container
     document.getElementById("container").appendChild(bigBox);
   }
 }
+
 
 // Fonction qui vérifie la valeur de l'input range et cache les divs inutiles
 function checkValue() {
