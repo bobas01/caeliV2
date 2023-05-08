@@ -107,6 +107,8 @@ main {
         padding: 10px 20px 0 20px;
         color: #ffffff;
         float: right;
+        text-decoration: none;
+        font-style: italic;
 
     }
 }
@@ -221,9 +223,7 @@ main {
             text-align: center;
         }
 
-        tr:first-child {
-            font-weight: bold;
-        }
+     
 
         select {
             width: 100%;
@@ -446,21 +446,25 @@ main {
         height: 30px;
 
         &::before {
-            content: 'Le plus important suffira.';
+            content: 'Le plus important suffira, merci !';
             left: 0;
+            width: 390px;
         }
 
         &::after {
-            content: 'Je veux tous savoir';
+            content: 'Je veux tous savoir !';
             right: 0;
+            width: 270px;
         }
 
         &::after,
         &::before {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-family: $txt;
             position: absolute;
             top: 165%;
+            font-weight: 900;
+            color: #fff;
         }
 
         &::-webkit-slider-thumb {

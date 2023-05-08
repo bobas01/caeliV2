@@ -86,6 +86,8 @@ main {
   padding: 10px 20px 0 20px;
   color: #ffffff;
   float: right;
+  text-decoration: none;
+  font-style: italic;
 }
 
 @media screen and (min-width: 600px) {
@@ -170,9 +172,6 @@ main {
 #slide3 table th:last-child,
 #slide3 table td:last-child {
   text-align: center;
-}
-#slide3 table tr:first-child {
-  font-weight: bold;
 }
 #slide3 table select {
   width: 100%;
@@ -344,18 +343,22 @@ main {
   height: 30px;
 }
 #slide5 input[type=range]::before {
-  content: "Le plus important suffira.";
+  content: "Le plus important suffira, merci !";
   left: 0;
+  width: 390px;
 }
 #slide5 input[type=range]::after {
-  content: "Je veux tous savoir";
+  content: "Je veux tous savoir !";
   right: 0;
+  width: 270px;
 }
 #slide5 input[type=range]::after, #slide5 input[type=range]::before {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-family: "Lato", sans-serif;
   position: absolute;
   top: 165%;
+  font-weight: 900;
+  color: #fff;
 }
 #slide5 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
